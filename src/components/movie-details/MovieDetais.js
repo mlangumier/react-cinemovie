@@ -3,8 +3,9 @@ import React, { Component } from "react";
 export default class MovieDetails extends Component {
   render() {
     return (
-      <div className="w-25 p-4 mx-2 border d-flex flex-column">
+      <div className="w-25 p-4 d-flex flex-column bg-light">
         <h5 className="text-center">{this.props.movie.title}</h5>
+        <hr className="w-100" />
         <div>
           <img
             src={this.props.movie.img}
