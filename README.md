@@ -1,4 +1,4 @@
-# Cineflix
+# CineMovie
 
 Cineflix is an app that will use an API to get information on movies.
 
@@ -23,3 +23,7 @@ Ecouteur d'évènement pour afficher dans le volet de droite un film de la liste
 ## ETAPE 3 - Rendu conditionnel & listes
 
 On a refactorisé notre app pour séparer les composants, ajouter `SCSS`, créé un fichier pour la data. On a itérer sur les composant pour afficher notre liste, créé une icone `loading`, et modifié un peu le style.
+
+## ETAPES 4 - Formulaire de recherche & API
+
+On a refactorisé l'appli afin d'utiliser une API sur laquelle on va chercher nos films avec la librairie `Axios` (requêtes GET). On a créé un formulaire de recherche avec `Formik` qui nous permet de cherche des films par titre et de définir la langue de l'affichage des résultats.

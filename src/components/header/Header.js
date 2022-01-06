@@ -6,7 +6,7 @@ export default class Header extends Component {
       <header className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            Cineflix
+            CineMovie
           </a>
           <button className="navbar-toggler">
             <span className="navbar-toggler-icon"></span>

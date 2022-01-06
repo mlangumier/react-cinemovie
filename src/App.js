@@ -1,7 +1,13 @@
 import React, { Component } from "react";
-import { Header, MovieList, MovieDetails, Loading } from "./components";
+import {
+  Header,
+  MovieList,
+  MovieDetails,
+  Loading,
+  SearchBar,
+} from "./components";
 import "./App.css";
-import dataMovies from "./data/data.movies";
+import apiMovie, { apiMovieMap } from "./config/api.movie";
 
 class App extends Component {
   constructor(props) {
@@ -9,15 +15,8 @@ class App extends Component {
     this.state = {
       movies: null,
       selectedMovie: 0,
-      hasLoaded: false,
+      loaded: false,
     };
-
-    setTimeout(() => {
-      this.setState({
-        movies: dataMovies,
-        hasLoaded: true,
-      });
-    }, 200);
   }
 
   updateSelectedMovie = (index) => {
@@ -26,12 +25,32 @@ class App extends Component {
     });
   };
 
+  componentDidMount() {
+    apiMovie
+      .get("/discover/movie")
+      .then((res) => res.data.results)
+      .then((moviesApi) => {
+        const movies = moviesApi.map(apiMovieMap);
+        console.log(movies);
+        this.updateMovies(movies);
+      })
+      .catch((err) => console.log(err));
+  }
+
+  updateMovies = (movies) => {
+    this.setState({
+      movies,
+      loaded: true,
+    });
+  };
+
   render() {
     return (
       <div className="App d-flex flex-column">
         <Header />
-        {this.state.hasLoaded ? (
-          <div className="d-flex fle-row flex-fill pt-4 container-fluid">
+        <SearchBar updateMovies={this.updateMovies} />
+        {this.state.loaded ? (
+          <div className="d-flex fle-row flex-fill pt-4 container-fluid position-relative">
             <MovieList
               movies={this.state.movies}
               updateSelectedMovie={this.updateSelectedMovie}
