@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Header,
   MovieList,
@@ -9,60 +9,48 @@ import {
 import "./App.css";
 import apiMovie, { apiMovieMap } from "./config/api.movie";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      movies: null,
-      selectedMovie: 0,
-      loaded: false,
-    };
-  }
+function App() {
+  const [movies, setMovies] = useState(null);
+  const [selectedMovie, setSelectedMovie] = useState(0);
+  const [hasLoaded, setHasLoaded] = useState(false);
 
-  updateSelectedMovie = (index) => {
-    this.setState({
-      selectedMovie: index,
-    });
+  const updateSelectedMovie = (index) => {
+    setSelectedMovie(index);
   };
 
-  componentDidMount() {
+  useEffect(() => {
     apiMovie
       .get("/discover/movie")
       .then((res) => res.data.results)
       .then((moviesApi) => {
         const movies = moviesApi.map(apiMovieMap);
-        console.log(movies);
-        this.updateMovies(movies);
+        updateMovies(movies);
       })
       .catch((err) => console.log(err));
-  }
+  }, []);
 
-  updateMovies = (movies) => {
-    this.setState({
-      movies,
-      loaded: true,
-    });
+  const updateMovies = (movies) => {
+    setMovies(movies);
+    setHasLoaded(true);
   };
 
-  render() {
-    return (
-      <div className="App d-flex flex-column">
-        <Header />
-        <SearchBar updateMovies={this.updateMovies} />
-        {this.state.loaded ? (
-          <div className="d-flex fle-row flex-fill pt-4 container-fluid position-relative">
-            <MovieList
-              movies={this.state.movies}
-              updateSelectedMovie={this.updateSelectedMovie}
-            />
-            <MovieDetails movie={this.state.movies[this.state.selectedMovie]} />
-          </div>
-        ) : (
-          <Loading />
-        )}
-      </div>
-    );
-  }
+  return (
+    <div className="App d-flex flex-column">
+      <Header />
+      <SearchBar updateMovies={updateMovies} />
+      {hasLoaded ? (
+        <div className="d-flex fle-row flex-fill pt-4 container-fluid position-relative">
+          <MovieList
+            movies={movies}
+            updateSelectedMovie={updateSelectedMovie}
+          />
+          <MovieDetails movie={movies[selectedMovie]} />
+        </div>
+      ) : (
+        <Loading />
+      )}
+    </div>
+  );
 }
 
 export default App;

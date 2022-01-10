@@ -1,6 +1,6 @@
 import React from "react";
 
-const Loading = () => {
+function Loading() {
   return (
     <div
       style={{ minHeight: "100vh" }}
@@ -14,6 +14,6 @@ const Loading = () => {
       />
     </div>
   );
-};
+}
 
 export default Loading;

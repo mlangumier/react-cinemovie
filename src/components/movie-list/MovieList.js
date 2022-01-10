@@ -1,20 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import { MovieElement } from "..";
 
-export default class MovieList extends Component {
-  render() {
-    return (
-      <div className="w-75 d-flex flex-row flex-wrap align-content-start">
-        {this.props.movies.map((m, index) => (
-          <MovieElement
-            key={m.title + index}
-            movie={m}
-            updateSelectedMovie={() => {
-              this.props.updateSelectedMovie(index);
-            }}
-          />
-        ))}
-      </div>
-    );
-  }
+function MovieList(props) {
+  return (
+    <div className="w-75 d-flex flex-row flex-wrap align-content-start">
+      {props.movies.map((m, index) => (
+        <MovieElement
+          key={m.title + index}
+          movie={m}
+          updateSelectedMovie={() => {
+            props.updateSelectedMovie(index);
+          }}
+        />
+      ))}
+    </div>
+  );
 }
+
+export default MovieList;

@@ -27,3 +27,7 @@ On a refactorisé notre app pour séparer les composants, ajouter `SCSS`, créé
 ## ETAPES 4 - Formulaire de recherche & API
 
 On a refactorisé l'appli afin d'utiliser une API sur laquelle on va chercher nos films avec la librairie `Axios` (requêtes GET). On a créé un formulaire de recherche avec `Formik` qui nous permet de cherche des films par titre et de définir la langue de l'affichage des résultats.
+
+## ETAPE 5 -
+
+On a commencé par refactoriser l'appli pour utiliser les hooks de la version React 16.8.
