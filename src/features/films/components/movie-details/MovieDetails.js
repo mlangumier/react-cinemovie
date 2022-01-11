@@ -1,8 +1,6 @@
 import React from "react";
 
 function MovieDetails(props) {
-  // Add : on hover + scroll
-
   return (
     <div className="w-25 p-4 d-flex flex-column bg-light h-100 sticky-top">
       <h5 className="text-center">{props.movie.title}</h5>

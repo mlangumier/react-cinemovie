@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik } from "formik";
-import apiMovie, { apiMovieMap } from "../../config/api.movie";
+import apiMovie, { apiMovieMap } from "../../../../config/api.movie";
 
 function SearchBar(props) {
   const submit = (values, actions) => {

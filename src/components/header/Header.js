@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import Style from "./Header.module.scss";
 
 function Header() {
   return (
@@ -13,14 +15,24 @@ function Header() {
         <div className="collapse navbar-collapse justify-content-end">
           <ul className="navbar-nav me-0">
             <li className="nav-item active">
-              <a className="nav-link" href="/">
+              <NavLink
+                to="/films"
+                className={({ isActive }) =>
+                  "nav-link " + (isActive ? Style.activeLink : "")
+                }
+              >
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <NavLink
+                to="/favorites"
+                className={({ isActive }) =>
+                  "nav-link " + (isActive ? Style.activeLink : "")
+                }
+              >
                 Favorites
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>
