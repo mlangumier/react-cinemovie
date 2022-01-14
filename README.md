@@ -25,6 +25,6 @@ On a refactorisé notre app pour séparer les composants, ajouter `SCSS`, créé
 
 On a refactorisé l'appli afin d'utiliser une API sur laquelle on va chercher nos films avec la librairie `Axios` (requêtes GET). On a créé un formulaire de recherche avec `Formik` qui nous permet de cherche des films par titre et de définir la langue de l'affichage des résultats.
 
-## ETAPE 5 -
+## ETAPE 5 - Hooks, Routing & Firebase
 
 On a commencé par refactoriser l'appli pour utiliser les hooks de la version React 16.8 et préparer le terrain pour l'utilisation des routes. On a mis en place les routes avec `React Router` ainsi que la feature d'ajout et enregistrement des favoris sur `Firebase`.
