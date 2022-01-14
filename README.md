@@ -1,6 +1,6 @@
 # CineMovie
 
-Cineflix is an app that will use an API to get information on movies.
+CineMovie est un projet qui utilise l'API `https://www.themoviedb.org/` pour récupérer une liste de films, permet à l'utilisateur de sélectionner des favoris (hooks & state), de voir ces favoris sur une autre page (routing), et de sauvegarder cette liste (BDD FireBase).
 
 ## Features
 
